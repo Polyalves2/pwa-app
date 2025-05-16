@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <textarea id="sub" placeholder="Cole aqui a subscription JSON"></textarea>
+  <button onclick="send()">Enviar Notificação</button>
+
+  <script>
+    function send() {
+      const subscription = JSON.parse(document.getElementById('sub').value);
+      fetch('http://localhost:3000/sendNotification', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subscription })
+      }).then(res => alert('Enviado!'));
+    }
+  </script>
+</body>
+</html>
